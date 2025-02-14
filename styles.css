@@ -1,0 +1,784 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background-color: white;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+header, .nav-bar ul li a, .home-bg, #skills, #projects, #contact {
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+/* Fade-in Effect for Sections */
+section {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Delay different sections for a staggered effect */
+#about { animation-delay: 0.3s; }
+#skills { animation-delay: 0.6s; }
+#projects { animation-delay: 0.9s; }
+#contact { animation-delay: 1.2s; }
+
+/* Define the Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ------------------------------------------------------------- */
+/* Header Section Start */
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    z-index: 1000;  
+    backdrop-filter: blur(10px); 
+    transition: background 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+}
+header .head-content{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    backdrop-filter: blur(50px);
+    background: transparent;
+    width: 100%;
+}
+/* logo */
+header .logo img{
+    width: 50%;
+    padding: 20px;
+    filter: invert(0);
+    transition: filter 0.3s ease-in-out;
+}
+/* navigartion bar */
+.nav-bar ul {
+    list-style: none;
+    display: flex;
+    justify-content: right ;
+}
+.nav-bar ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    font-size: 20px;
+}
+.nav-bar ul li a:hover{
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+}
+/* day-night toggle */
+.theme-checkbox {
+    display: none;
+}
+.dark-icon {
+    display: none; /* Hide Dark Mode Icon by Default */
+}
+.day-night-toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+}
+.toggle-icon {
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease-in-out;
+}
+/* Dark Mode Activation */
+body:has(#theme-toggle:checked) {
+    background-color: #121212; 
+    color: #e0e0e0;  
+}
+body:has(#theme-toggle:checked) .light-icon {
+    display: none;
+}
+body:has(#theme-toggle:checked) .dark-icon {
+    display: inline;
+}
+/* Dark Mode Header*/
+body:has(#theme-toggle:checked) header {
+    backdrop-filter: blur(5px); 
+    transition: background 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+}
+body:has(#theme-toggle:checked) header.scrolled {
+    background: rgba(20, 20, 20, 0.8) !important; 
+    backdrop-filter: blur(10px);
+}
+body:has(#theme-toggle:checked) .head-content {
+    backdrop-filter: blur(50px);
+    background: transparent;
+}
+body:has(#theme-toggle:checked) .logo img {
+    filter: invert(1);
+}
+body:has(#theme-toggle:checked) .nav-bar ul li a {
+    color: #ffffff;
+}
+/* Header Section End */
+/* ------------------------------------------------------------- */
+/* Home Section Start */
+#home{
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+#home .home-bg{
+    background-color: lightgrey;
+    padding-bottom: 20px;
+}
+#home .home-main{
+    margin: auto;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+}
+#home .home-content{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    letter-spacing: 0.5px;
+}
+#home .home-content h1{
+    font-size: 33px;
+    font-weight:900;
+    padding: 5px;
+}
+#home .home-content p{
+    font-size: medium;
+    padding: 5px;
+    text-align: justify;
+}
+#home .home-content .social-icons a img{
+    width: 6%;
+    padding: 2px;
+}
+.Resume {
+    background-color: #f5f5f5;
+    color: black;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+/* Hover Effect */
+.Resume:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+#home .home-image{
+    padding: 0 30px;
+}
+#home .home-image .profile-image{
+    width: 90%;
+    align-items: center;
+    border: 3px solid rgb(44, 44, 44);
+    border-radius: 3%;
+}
+/* Home Section */
+body:has(#theme-toggle:checked) .home-bg {
+    background-color: #2b2b2b !important;
+}
+body:has(#theme-toggle:checked) .social-icons a img {
+    filter: invert(1);
+}
+/* Home Section - Social Icons Hover Effect */
+#home .social-icons .linkedin:hover img {
+    filter: invert(30%) sepia(90%) saturate(500%) hue-rotate(190deg) brightness(90%) contrast(100%);
+} /* LinkedIn - Blue */
+
+#home .social-icons .github:hover img {
+    filter: invert(40%) sepia(100%) saturate(800%) hue-rotate(100deg) brightness(80%) contrast(100%);
+} /* GitHub - Brighter Green */
+
+#home .social-icons .instagram:hover img {
+    filter: invert(20%) sepia(60%) saturate(900%) hue-rotate(310deg) brightness(100%) contrast(105%);
+} /* Instagram - Pink */
+
+#home .social-icons .twitter:hover img {
+    filter: invert(50%) sepia(90%) saturate(500%) hue-rotate(190deg) brightness(95%) contrast(105%);
+} /* X (Twitter) - Blue */
+
+#home .social-icons .gmail:hover img {
+    filter: invert(20%) sepia(90%) saturate(800%) hue-rotate(0deg) brightness(95%) contrast(110%);
+} /* Gmail - Brighter Red */
+
+/* Home Section End */
+/* ------------------------------------------------------------- */
+/* About Section Start */
+#about{
+    margin: auto;
+    margin-top: 30px;
+    width: 85%;
+    padding-bottom: 20px;
+}
+#about h2{
+    padding-top: 10px;
+    font-size: 60px;
+    font-weight: 900;
+    text-align: center;
+}
+#about .about{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;   
+    align-items: flex-start; 
+    gap: 20px; 
+}
+#about .about .profile-image{
+    width: 25%;
+    border: 3px solid black;
+    border-radius: 3%;
+    margin: 30px 80px;
+    flex-shrink: 0;
+}
+#about .about .about-content{
+    margin: 20px;
+    margin-right: 50px;
+    letter-spacing: 0.5px;
+    padding: 20px;
+    flex-grow: 1;
+    overflow: hidden;
+}
+#about .about .about-content p{
+    padding: 10px;
+    font-size: 17px;
+    text-align: justify;
+}
+#about .about .about-content .read-more summary{
+    display: list-item;
+    list-style: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+/* Default Profile Image (Light Mode) */
+.profile-image {
+    border: 3px solid rgb(44, 44, 44);
+    border-radius: 3%;
+    background: transparent;
+    transition: background 0.5s ease-in-out;
+}
+/* Dark Mode - Add Background */
+body:has(#theme-toggle:checked) .profile-image {
+    background: radial-gradient(circle, rgba(50, 50, 50, 0.9) 50%, rgba(30, 30, 30, 0.9) 100%);
+    border: 3px solid white;
+}
+/* Hover Effect */
+.profile-image:hover {
+    transform: scale(1.05); /* Slight Enlargement */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Soft Shadow */
+}
+
+/* Dark Mode - Background for Profile Image */
+body:has(#theme-toggle:checked) .profile-image {
+    background: radial-gradient(circle, rgba(50, 50, 50, 0.9) 50%, rgba(30, 30, 30, 0.9) 100%);
+    border: 3px solid white;
+}
+
+/* Dark Mode - Hover Effect */
+body:has(#theme-toggle:checked) .profile-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.3);
+}
+/* About Section End */
+/* ------------------------------------------------------------- */
+/* Skills Section Start */
+#skills {
+    background-color: lightgrey;
+    margin: auto;
+    padding-bottom: 40px;
+    text-align: center;
+}
+#skills #skills-main{
+    width: 85%;
+}
+#skills h2{
+    padding-top: 10px;
+    font-size: 60px;
+    font-weight: 900;
+    text-align: center;
+}
+#skills h3 {
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center;
+    justify-content: center;
+    padding: 5% 20px;
+    color: black;
+}
+/* Skills Section */
+body:has(#theme-toggle:checked) #skills {
+    background-color: #222222;
+}
+/* Dark Mode Header Text */
+body:has(#theme-toggle:checked) #skills h2,
+body:has(#theme-toggle:checked) #skills h3 {
+    color: white;
+}
+
+/* Vertical Progress Bars (Technical Skills) */
+.vertical-skills {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 20px 0;
+}
+.technical-skills-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 30px;
+}
+.v-skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.v-skill p{
+    padding: 5px;
+}
+/* Vertical Progress Bar */
+.v-progress-bar {
+    width: 20px;
+    height: 150px;
+    background-color: #444;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}
+
+/* Progress Fill */
+.v-progress {
+    width: 100%;
+    transition: height 1s ease-in-out;
+}
+/* Monochrome Progress Levels */
+.java { height: 90%; background-color: #222; }
+.python { height: 85%; background-color: #333; }
+.c { height: 80%; background-color: #444; }
+.js { height: 75%; background-color: #555; }
+.sql { height: 80%; background-color: #666; }
+.git { height: 85%; background-color: #777; }
+
+/* Dark Mode - Vertical Progress Bars */
+body:has(#theme-toggle:checked) .v-progress-bar {
+    background-color: #222; 
+}
+
+body:has(#theme-toggle:checked) .v-progress {
+    background-color: white; 
+}
+
+/* Circular Progress for Soft Skills (Applies Dark Mode Styling for All) */
+.soft-skill-main {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 20px 0;
+}
+.soft-skills-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 30px;
+}
+.soft-skill p{
+    padding: 5px;
+}
+/* Circular Progress Indicators */
+.circular-progress {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    background: radial-gradient(circle, rgba(255,255,255,0.9) 50%, transparent 51%);
+    box-shadow: inset 0px 0px 5px rgba(0,0,0,0.2), 0px 0px 10px rgba(0,0,0,0.1);
+    border: 3px solid black;
+}
+/* Fill Progress Using Conic Gradient */
+.circular-progress::after {
+    content: attr(data-progress) '%';
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    background: conic-gradient(black calc(var(--progress) * 1%), white 0%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Dark Mode - Better Contrast */
+body:has(#theme-toggle:checked) .circular-progress {
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.9) 50%, transparent 51%);
+    box-shadow: inset 0px 0px 5px rgba(255,255,255,0.3), 0px 0px 10px rgba(255,255,255,0.1);
+    border: 3px solid white;
+}
+body:has(#theme-toggle:checked) .circular-progress::after {
+    background: conic-gradient(white calc(var(--progress) * 1%), black 0%);
+    color: white;
+}
+/* Show Percentage in Center */
+.circular-progress::before {
+    content: attr(data-progress) '%';
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold;
+    color: inherit;
+}
+/* Custom Progress Values */
+.circular-progress[data-progress="85"] { --progress: 85%; }
+.circular-progress[data-progress="88"] { --progress: 88%; }
+.circular-progress[data-progress="80"] { --progress: 80%; }
+/* Dark Mode Progress Bars */
+body:has(#theme-toggle:checked) .progress-bar {
+    background-color: #2b2b2b; 
+}
+body:has(#theme-toggle:checked) .progress {
+    background-color: #eaeaea; 
+}
+/* Skills Section End */
+/* ------------------------------------------------------------- */
+/* Certifications Section Start */
+#certifications{
+    padding-bottom: 20px;
+    margin: auto;
+    width: 70%;
+}
+#certifications h2{
+    font-size: 60px;
+    padding: 30px;
+    font-weight: 900;
+    text-align: center;
+}
+.certificates{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+#certifications .certificates .certification-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+}
+#certifications .certificates .certification-card .certificate-content{
+    padding: 10px;
+}
+#certifications .certificates .certification-card h3{
+    font-size: 25px;
+}
+#certifications .certificates .certification-card p{
+    font-size: 18px;
+    padding: 10px;
+    letter-spacing: 1px;
+}
+.certificate-image{
+    width: 30%;
+}
+.certificate-image a img{
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 5%;
+}
+/* Certifications Section End */
+/* ------------------------------------------------------------- */
+/* Projects Section Start */
+#projects{
+    background-color: lightgray;
+    padding-bottom: 20px;
+}
+#projects h2{
+    font-size: 60px;
+    padding: 30px;
+    font-weight: 900;
+    text-align: center;
+}
+#projects .projects{
+    width: 70%;
+    margin: auto;
+}
+#projects .projects .project-container{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+#projects .projects .project-card{
+    border: 2px solid black;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    margin: 0 10px;
+    background-color: rgb(248, 248, 248);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.project-card:hover {
+    background-color: #eaeaea; 
+    transform: scale(1.05); 
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2); 
+}
+#projects .projects .project-card h3{
+    font-size: 18px;
+    padding: 10px;
+}
+#projects .projects .project-card p{
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding: 5px;
+}
+/* Project Section */
+body:has(#theme-toggle:checked) #projects {
+    background-color: #1a1a1a;
+}
+/* Project Cards - Dark Mode */
+body:has(#theme-toggle:checked) .project-card {
+    background-color: #2a2a2a !important;  
+    color: #f1f1f1 !important;  
+    border: 1px solid #444;  
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.05); 
+}
+/* Project Card Hover Effect - Dark Mode */
+body:has(#theme-toggle:checked) .project-card:hover {
+    background-color: #333 !important; 
+    transform: scale(1.03);  
+    box-shadow: 0px 6px 15px rgba(255, 255, 255, 0.08); 
+}
+/* Projects Section End */
+/* ------------------------------------------------------------- */
+/* Contact Section Start */
+#contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#contact h2{
+    font-size: 60px;
+    padding: 30px;
+    font-weight: 900;
+    text-align: center;
+}
+#contact .form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+}
+#contact .form input,#contact .form textarea{
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 8px;
+    width: 500px;
+}
+#contact .form button{
+    border-radius: 12px;
+    margin: 8px;
+    padding: 10px;
+    width: 100px;
+    background-color: rgb(32, 32, 32);
+    color: white;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+#contact .form button:hover{
+    color: rgb(236, 236, 236);
+    background-color: rgb(24, 24, 24);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+/* Contact Section */
+body:has(#theme-toggle:checked) #contact {
+    background-color: #222222;
+}
+/* Contact Form Inputs - Dark Mode */
+body:has(#theme-toggle:checked) #contact .form input,
+body:has(#theme-toggle:checked) #contact .form textarea {
+    background-color: #222 !important;  
+    color: #fff !important;  
+    border: 1px solid #fff !important;  
+}
+/* Placeholder Text Color */
+body:has(#theme-toggle:checked) #contact .form input::placeholder,
+body:has(#theme-toggle:checked) #contact .form textarea::placeholder {
+    color: #aaa !important;  
+}
+/* Focus Effect */
+body:has(#theme-toggle:checked) #contact .form input:focus,
+body:has(#theme-toggle:checked) #contact .form textarea:focus {
+    border-color: #00aaff !important; 
+    outline: none;
+}
+/* Contact Section End */
+/* ------------------------------------------------------------- */
+/* Footer Section Start */
+footer {
+    background-color: lightgray;
+    color: black;
+    text-align: center;
+    padding: 20px 0;
+}
+/* Social Icons Container */
+footer .social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 10px;
+}
+
+/* Footer Text */
+footer p {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Dark Mode Footer */
+body:has(#theme-toggle:checked) footer {
+    background-color: #111;
+    color: #ddd;
+}
+footer .social{
+    border: 5px #111;
+}
+/* Footer Social Icons */
+footer .social a img {
+    width: 40px;
+    height: 40px;
+    padding: 20%;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+/* Icon Hover Effect */
+footer .social a img:hover {
+    transform: scale(1.1);
+}
+
+/* 🔹 Original Brand Colors on Hover */
+footer .social .linkedin:hover img {
+    filter: invert(30%) sepia(90%) saturate(500%) hue-rotate(190deg) brightness(90%) contrast(100%);
+} /* LinkedIn - Blue */
+
+footer .social .github:hover img {
+    filter: invert(40%) sepia(100%) saturate(800%) hue-rotate(100deg) brightness(80%) contrast(100%);
+} /* GitHub - Brighter Green */
+
+footer .social .instagram:hover img {
+    filter: invert(20%) sepia(60%) saturate(900%) hue-rotate(310deg) brightness(100%) contrast(105%);
+} /* Instagram - Pink */
+
+footer .social .twitter:hover img {
+    filter: invert(50%) sepia(90%) saturate(500%) hue-rotate(190deg) brightness(95%) contrast(105%);
+} /* X (Twitter) - Blue */
+
+footer .social .whatsapp:hover img {
+    filter: invert(35%) sepia(100%) saturate(900%) hue-rotate(120deg) brightness(70%) contrast(110%);
+} /* WhatsApp - Darker Green */
+
+footer .social .gmail:hover img {
+    filter: invert(20%) sepia(90%) saturate(800%) hue-rotate(0deg) brightness(95%) contrast(110%);
+} /* Gmail - Brighter Red */
+
+/* ------------------------ */
+/* 🔹 Ensure It Works in Dark Mode */
+/* ------------------------ */
+body:has(#theme-toggle:checked) footer .social a img {
+    filter: invert(100%); /* Makes default icons white in dark mode */
+}
+
+/* Maintain the hover effect in dark mode */
+body:has(#theme-toggle:checked) footer .social .linkedin:hover img {
+    filter: invert(30%) sepia(90%) saturate(500%) hue-rotate(190deg) brightness(90%) contrast(100%);
+}
+
+body:has(#theme-toggle:checked) footer .social .github:hover img {
+    filter: invert(40%) sepia(100%) saturate(800%) hue-rotate(100deg) brightness(80%) contrast(100%);
+}
+
+body:has(#theme-toggle:checked) footer .social .instagram:hover img {
+    filter: invert(20%) sepia(60%) saturate(900%) hue-rotate(310deg) brightness(100%) contrast(105%);
+}
+
+body:has(#theme-toggle:checked) footer .social .twitter:hover img {
+    filter: invert(50%) sepia(90%) saturate(500%) hue-rotate(190deg) brightness(95%) contrast(105%);
+}
+
+body:has(#theme-toggle:checked) footer .social .whatsapp:hover img {
+    filter: invert(35%) sepia(100%) saturate(900%) hue-rotate(120deg) brightness(70%) contrast(110%);
+}
+
+body:has(#theme-toggle:checked) footer .social .gmail:hover img {
+    filter: invert(20%) sepia(90%) saturate(800%) hue-rotate(0deg) brightness(95%) contrast(110%);
+}
+
+/* Footer Section End */
+
+/* medida queries */
+/* Responsive Design for iPad Mini (768px width) */
+@media (max-width: 768px) {
+    .nav-bar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    .home-main {
+        flex-direction: column;
+        text-align: center;
+    }
+    .home-content {
+        padding: 20px;
+    }
+    .home-image .profile-image {
+        width: 80%;
+    }
+}
+
+/* Responsive Design for Samsung Galaxy S8+ (360px width) */
+@media (max-width: 360px) {
+    .nav-bar ul {
+        flex-direction: column;
+        text-align: center;
+    }
+    .home-main {
+        flex-direction: column;
+    }
+    .home-content p {
+        font-size: 14px;
+    }
+    .home-image .profile-image {
+        width: 70%;
+    }
+}
